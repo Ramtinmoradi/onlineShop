@@ -7,7 +7,7 @@ import org.springframework.data.repository.PagingAndSortingRepository
 
 interface ProductRepository : PagingAndSortingRepository<Product, Long>, CrudRepository<Product, Long> {
     override fun findAll(): List<Product>
-    fun findByTitle(title: String): Product?
+    fun findByTitle(title: String): List<Product>
     fun findAllByOrderByAddDateDesc(pageable: Pageable): List<Product>
     fun findTop10ByOrderByOrderCountDesc(): List<Product>
     fun findTop10ByOrderByVisitCountDesc(): List<Product>

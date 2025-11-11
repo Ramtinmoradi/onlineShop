@@ -8,8 +8,9 @@ class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
     var title: String? = null
+    @Column(columnDefinition = "TEXT")
     var description: String? = null
-    var price: Double? = null
+    var price: Int? = null
     var quantity: Int? = null
     var image: String? = null
     var addDate: String? = null

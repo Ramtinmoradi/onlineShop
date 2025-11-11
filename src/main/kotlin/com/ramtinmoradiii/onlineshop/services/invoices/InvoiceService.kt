@@ -26,17 +26,34 @@ class InvoiceService {
         return repository.save(invoice)
     }
 
-    fun getAll(page: Int = 1, pageSize: Int = 20): List<Invoice> {
-        val pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.ASC, "id"))
-        return repository.findAll(pageRequest).toList()
+    fun getAll(page: Int, pageSize: Int): List<Invoice> {
+        return repository.findAll(
+            PageRequest.of(
+                (page - 1).coerceAtLeast(0),
+                pageSize,
+                Sort.by(
+                    Sort.Direction.ASC,
+                    "id"
+                )
+            )
+        ).toList()
     }
 
     fun getById(id: Long): Invoice? {
         return repository.findById(id).orElse(null)
     }
 
-    fun getByUserId(userId: Long, page: Int = 1, pageSize: Int = 20): List<Invoice>? {
-        val pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.ASC, "id"))
-        return repository.findByUserId(userId, pageRequest)?.toList()
+    fun getByUserId(userId: Long, page: Int, pageSize: Int): List<Invoice>? {
+        return repository.findByUserId(
+            userId,
+            PageRequest.of(
+                (page - 1).coerceAtLeast(0),
+                pageSize,
+                Sort.by(
+                    Sort.Direction.ASC,
+                    "id"
+                )
+            )
+        )?.toList()
     }
 }

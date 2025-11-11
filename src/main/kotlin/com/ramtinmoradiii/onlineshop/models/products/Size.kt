@@ -1,5 +1,6 @@
 package com.ramtinmoradiii.onlineshop.models.products
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
@@ -11,5 +12,6 @@ class Size {
     var value: String? = null
 
     @ManyToMany(mappedBy = "sizes")
+    @JsonIgnore
     var products: List<Product>? = null
 }

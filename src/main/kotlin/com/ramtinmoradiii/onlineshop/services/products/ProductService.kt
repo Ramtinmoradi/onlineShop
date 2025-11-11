@@ -14,12 +14,17 @@ class ProductService {
     @Autowired
     lateinit var repository: ProductRepository
 
-    fun getAll(page: Int = 1, pageSize: Int = 20): List<Product> {
-        val pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.ASC, "id"))
-        return repository.findAll(pageRequest).toList()
+    fun getAll(page: Int, pageSize: Int): List<Product> {
+        return repository.findAll(
+            PageRequest.of(
+                (page - 1).coerceAtLeast(0),
+                pageSize,
+                Sort.by(Sort.Direction.ASC, "id")
+            )
+        ).toList()
     }
 
-    fun getByTitle(title: String): Product? {
+    fun getByTitle(title: String): List<Product> {
         return repository.findByTitle(title)
     }
 
@@ -31,16 +36,21 @@ class ProductService {
         }.orElse(null)
     }
 
-    fun getNew(page: Int = 1, pageSize: Int = 20): List<Product> {
-        val pageRequest = PageRequest.of(page, pageSize, Sort.by(Sort.Direction.DESC, "id"))
-        return repository.findAllByOrderByAddDateDesc(pageRequest).toList()
+    fun getNew(page: Int, pageSize: Int): List<Product> {
+        return repository.findAllByOrderByAddDateDesc(
+            PageRequest.of(
+                (page - 1).coerceAtLeast(0),
+                pageSize,
+                Sort.by(Sort.Direction.ASC, "id")
+            )
+        ).toList()
     }
 
     fun getTopOrder(): List<Product> {
         return repository.findTop10ByOrderByOrderCountDesc()
     }
 
-    fun getTopVisited(): List<Product> {
+    fun getTopView(): List<Product> {
         return repository.findTop10ByOrderByVisitCountDesc()
     }
 

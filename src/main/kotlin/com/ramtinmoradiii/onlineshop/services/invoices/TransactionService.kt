@@ -1,7 +1,9 @@
 package com.ramtinmoradiii.onlineshop.services.invoices
 
+import com.ramtinmoradiii.onlineshop.exceptions.ResourceNotFoundException
 import com.ramtinmoradiii.onlineshop.models.invoices.Transaction
 import com.ramtinmoradiii.onlineshop.repositories.invoices.TransactionRepository
+import com.ramtinmoradiii.onlineshop.utils.ResponseMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -25,6 +27,6 @@ class TransactionService {
     }
 
     fun getById(id: Long): Transaction? {
-        return repository.findById(id).orElse(null)
+        return repository.findById(id).orElseThrow { ResourceNotFoundException(ResponseMessage.NOT_FOUND) }
     }
 }

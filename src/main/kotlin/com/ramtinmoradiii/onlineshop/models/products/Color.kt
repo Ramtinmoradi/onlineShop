@@ -4,14 +4,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
 @Entity
-class Color {
+data class Color(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
-    var title: String? = null
-    var hexValue: String? = null
+    var id: Long? = null,
+    var title: String? = null,
+    var hexValue: String? = null,
 
     @ManyToMany(mappedBy = "colors")
     @JsonIgnore
-    var products: List<Product>? = null
-}
+    var products: List<Product>? = null,
+)

@@ -23,7 +23,7 @@ class SizeController {
         return ServiceResponse(true, ResponseMessage.OK,service.getAll())
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getByID(@PathVariable id : Long) : ServiceResponse<Size> {
         return ServiceResponse(true, ResponseMessage.OK,service.getById(id))
     }

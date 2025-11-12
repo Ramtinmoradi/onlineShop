@@ -23,12 +23,12 @@ class ContentController {
         return ServiceResponse(true, ResponseMessage.OK, service.getAll())
     }
 
-    @GetMapping(ApiRoutes.BYTITLE)
+    @GetMapping(ApiRoutes.BY_TITLE)
     fun getByTitle(@PathVariable("title") title: String): ServiceResponse<List<Content>> {
         return ServiceResponse(true, ResponseMessage.OK, service.getByTitle(title))
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getById(@PathVariable("id") id: Long): ServiceResponse<Content?> {
         return ServiceResponse(true, ResponseMessage.OK, service.getById(id))
     }

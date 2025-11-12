@@ -27,12 +27,12 @@ class ProductController {
         return ServiceResponse(true, ResponseMessage.OK,service.getAll(page,pageSize))
     }
 
-    @GetMapping(ApiRoutes.BYTITLE)
+    @GetMapping(ApiRoutes.BY_TITLE)
     fun getByTitle(@PathVariable("title") title: String) : ServiceResponse<List<Product>> {
         return  ServiceResponse(true, ResponseMessage.OK,service.getByTitle(title))
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getById(@PathVariable("id") id: Long) : ServiceResponse<Product> {
         return ServiceResponse(true, ResponseMessage.OK,service.getById(id))
     }
@@ -45,12 +45,12 @@ class ProductController {
         return ServiceResponse(true, ResponseMessage.OK,service.getNew(page,pageSize))
     }
 
-    @GetMapping(ApiRoutes.TOPORDER)
+    @GetMapping(ApiRoutes.TOP_ORDER)
     fun getTop(): ServiceResponse<List<Product>> {
         return ServiceResponse(true, ResponseMessage.OK,service.getTopOrder())
     }
 
-    @GetMapping(ApiRoutes.TOPVIEW)
+    @GetMapping(ApiRoutes.TOP_VIEW)
     fun getView(): ServiceResponse<List<Product>> {
         return ServiceResponse(true, ResponseMessage.OK,service.getTopView())
     }

@@ -21,13 +21,27 @@ object ApiRoutes {
 
     //INVOICE
     const val INVOICE = "$VERSIONONE/invoice"
+    const val INVOICE_ITEM = "$INVOICE/item"
+
+    //USER
+    const val USER = "$VERSIONONE/user"
+    const val LOGIN = "/login"
+    const val SIGNUP = "/signup"
+
+    //CUSTOMER
+    const val CUSTOMER = "$VERSIONONE/customer"
+
+    //TRANSACTION
+    const val TRANSACTION = "$VERSIONONE/transaction"
 
     //CONSTANTS
     const val EMPTY = ""
-    const val BYID = "/{id}"
+    const val BY_ID = "/{id}"
+    const val SEARCH = "/search"
     const val COUNT = "/count"
-    const val BYTITLE = "/title/{title}"
+    const val BY_TITLE = "/title/{title}"
     const val NEW = "/new"
-    const val TOPORDER = "/topOrder"
-    const val TOPVIEW = "/topView"
+    const val TOP_ORDER = "/topOrder"
+    const val TOP_VIEW = "/topView"
+    const val UPDATE = "/update"
 }

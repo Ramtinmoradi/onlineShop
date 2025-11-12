@@ -1,7 +1,9 @@
 package com.ramtinmoradiii.onlineshop.services.invoices
 
+import com.ramtinmoradiii.onlineshop.exceptions.ResourceNotFoundException
 import com.ramtinmoradiii.onlineshop.models.invoices.Invoice
 import com.ramtinmoradiii.onlineshop.repositories.invoices.InvoiceRepository
+import com.ramtinmoradiii.onlineshop.utils.ResponseMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Sort
@@ -26,25 +28,12 @@ class InvoiceService {
         return repository.save(invoice)
     }
 
-    fun getAll(page: Int, pageSize: Int): List<Invoice> {
-        return repository.findAll(
-            PageRequest.of(
-                (page - 1).coerceAtLeast(0),
-                pageSize,
-                Sort.by(
-                    Sort.Direction.ASC,
-                    "id"
-                )
-            )
-        ).toList()
-    }
-
     fun getById(id: Long): Invoice? {
-        return repository.findById(id).orElse(null)
+        return repository.findById(id).orElseThrow { ResourceNotFoundException(ResponseMessage.NOT_FOUND) }
     }
 
-    fun getByUserId(userId: Long, page: Int, pageSize: Int): List<Invoice>? {
-        return repository.findByUserId(
+    fun getAllByUserId(userId: Long?, page: Int, pageSize: Int): List<Invoice>? {
+        return repository.findAllByUserId(
             userId,
             PageRequest.of(
                 (page - 1).coerceAtLeast(0),

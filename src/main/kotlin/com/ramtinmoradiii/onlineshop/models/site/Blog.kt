@@ -7,16 +7,16 @@ import jakarta.persistence.GenerationType
 import jakarta.persistence.Id
 
 @Entity
-class Blog {
+data class Blog(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null
-    var title: String? = null
-    var subTitle: String? = null
-    var author: String? = null
-    var image: String? = null
+    var id: Long? = null,
+    var title: String? = null,
+    var subTitle: String? = null,
+    var author: String? = null,
+    var image: String? = null,
     @Column(columnDefinition = "TEXT")
-    var description: String? = null
-    var visitCount: Int? = 0
-    var addDate: String? = null
-}
+    var description: String? = null,
+    var visitCount: Int? = 0,
+    var addDate: String? = null,
+)

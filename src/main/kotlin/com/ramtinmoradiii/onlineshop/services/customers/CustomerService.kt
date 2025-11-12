@@ -1,7 +1,9 @@
 package com.ramtinmoradiii.onlineshop.services.customers
 
+import com.ramtinmoradiii.onlineshop.exceptions.ResourceNotFoundException
 import com.ramtinmoradiii.onlineshop.models.customers.Customer
 import com.ramtinmoradiii.onlineshop.repositories.customers.CustomerRepository
+import com.ramtinmoradiii.onlineshop.utils.ResponseMessage
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -25,6 +27,6 @@ class CustomerService {
     }
 
     fun getById(id: Long): Customer? {
-        return repository.findById(id).orElse(null)
+        return repository.findById(id).orElseThrow { ResourceNotFoundException(ResponseMessage.NOT_FOUND) }
     }
 }

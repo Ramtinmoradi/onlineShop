@@ -27,12 +27,12 @@ class BlogController {
         return ServiceResponse(true, ResponseMessage.OK, service.getAll(page, pageSize))
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getById(@PathVariable("id") id: Long): ServiceResponse<Blog> {
         return ServiceResponse(true, ResponseMessage.OK, service.getById(id))
     }
 
-    @GetMapping(ApiRoutes.BYTITLE)
+    @GetMapping(ApiRoutes.BY_TITLE)
     fun getByTitle(@PathVariable("title") title: String): ServiceResponse<List<Blog>> {
         return  ServiceResponse(true, ResponseMessage.OK, service.getByTitle(title))
     }

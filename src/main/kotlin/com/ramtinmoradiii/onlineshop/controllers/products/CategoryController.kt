@@ -23,7 +23,7 @@ class CategoryController {
         return ServiceResponse(true, ResponseMessage.OK,service.getAll())
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getById(@PathVariable("id") id : Long) : ServiceResponse<Category?> {
         return ServiceResponse(true, ResponseMessage.OK,service.getById(id))
     }

@@ -23,7 +23,7 @@ class ColorController {
         return ServiceResponse(true, ResponseMessage.OK,service.getAll())
     }
 
-    @GetMapping(ApiRoutes.BYID)
+    @GetMapping(ApiRoutes.BY_ID)
     fun getById(@PathVariable id: Long): ServiceResponse<Color> {
         return ServiceResponse(true, ResponseMessage.OK,service.getById(id))
     }
